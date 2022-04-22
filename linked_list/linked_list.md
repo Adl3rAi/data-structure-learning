@@ -8,6 +8,7 @@
   - [Insert at any position](#insert-at-any-position)
   - [Delete element at any position](#delete-element-at-any-position)
   - [Reverse the linked list](#reverse-the-linked-list)
+  - [Reverse print the linked list](#reverse_print_the_linked_list)
 
 ---
 
@@ -120,3 +121,20 @@ void Reverse() {
 }
 ```
 
+## Reverse Print the linked list
+
+`reversePrint()` won't change the orders of the elements in the linked list
+
+[Source code for reverse print](https://github.com/Adl3rAi/data-structure-learning/blob/main/linked_list/reverse_print.cpp)
+
+```cpp
+void reversePrint() {
+  Node* temp = head;
+  if(temp != NULL) {
+    if(temp->next != NULL) {
+      reversePrint(temp->next);
+    }
+    cout << temp->data << " ";
+  }
+}
+```
