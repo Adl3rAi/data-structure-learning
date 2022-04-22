@@ -1,20 +1,19 @@
 # Linked List
 
->Abstract Data Type(ADT)
->
->* `print()`
->
->* `getLen()`
->
->* `insertAtBegin()`, `insert()`, `insertAtEnd()`
->* `delete()`
->* `reverse()`
+- [Linked List](#linked-list)
+  - [Define a Linked List](#define-a-linked-list)
+  - [Print a Linked List](#print-a-linked-list)
+  - [Insert at the begin](#insert-at-the-begin)
+  - [Insert at the end](#insert-at-the-end)
+  - [Insert at any position](#insert-at-any-position)
+  - [Delete element at any position](#delete-element-at-any-position)
+  - [Reverse the linked list](#reverse-the-linked-list)
 
 ---
 
 ## Define a Linked List
 
-```c++
+```cpp
 struct Node {
   int data;
   Node* next;
@@ -35,7 +34,7 @@ void Print() {
 
 ## Insert at the begin
 
-```c++
+```cpp
 void insertAtBegin(int data) {
   Node* temp = new Node();
   temp->data = data;
