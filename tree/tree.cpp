@@ -1,5 +1,6 @@
 #include <iostream>
 #include <queue>
+#include <math.h>
 using namespace std;
 struct bstNode {
     int data;
@@ -55,6 +56,36 @@ void postOrder(bstNode* root) {
     postOrder(root->right);
     cout << root->data << " ";
 }
+int Search(bstNode* root, int data) {
+    if(root == NULL) return false;
+    else if(root->data == data) {
+        return true;
+    }
+    else if(data <= root->data) return Search(root->left, data);
+    else return Search(root->right, data);    
+}
+int findMin(bstNode* root) {
+    if(root == NULL) return -1;
+    bstNode* current = root;
+    while(current->left != NULL) {
+        current = current->left;
+    }
+    return current->data;
+}
+int findMax(bstNode* root) {
+    if(root == NULL) return -1;
+    bstNode* current = root;
+    while(current->right != NULL) {
+        current = current->right;
+    }
+    return current->data;
+}
+int findHeight(bstNode* root) {
+    if(root == NULL) return -1;
+    int leftHeight = findHeight(root->left);
+    int rightHeight = findHeight(root->right);
+    return max(leftHeight,rightHeight) + 1;
+}
 int main()
 {
     bstNode* root = NULL;
@@ -67,4 +98,11 @@ int main()
     // inOrder(root);
     // postOrder(root);
 
+    // cout << Search(root, 9) << endl;
+    // cout << Search(root, 10) << endl;
+
+    // cout << findMin(root) << endl;
+    // cout << findMax(root) << endl;
+
+    // cout << findHeight(root);
 }
