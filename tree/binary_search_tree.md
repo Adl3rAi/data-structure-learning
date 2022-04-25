@@ -1,3 +1,13 @@
+[Define a binary search tree](#define-a-binary-search-tree)
+[Insert an element](#insert-an-element)
+[Traverse](#traverse)
+  * [level order](#level-order)
+  * [pre-order](#pre-order)
+  * [in-order](#in-order)
+  * [post-order](#post-order)
+[Search](#search)
+[Find maximum and minimum](#find-maximum-and-find-minimum)
+[Find height](#find-height)
 ## Define a binary search tree
 Binary Search Tree(BST): the element in the left side is smaller than or equal to the elements in the right side of the tree.
 
