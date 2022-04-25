@@ -112,3 +112,45 @@ void postOrder(bstNode* root) {
 
 ## Search
 
+```cpp
+int Search(bstNode* root, int data) {
+  if(root == NULL) return false;
+  else if(data == roo->data) return true;
+  else if(data <= root->data) return Search(root->left, data);
+  else return Search(root->right, data);
+}
+```
+
+## Find maximum and find minimum
+
+```cpp
+int findMax(bstNode* root) {
+    if(root == NULL) return -1;
+    bstNode* current = root;
+    while(current->right != NULL) {
+        current = current->right;
+    }
+    return current->data;
+}
+
+int findMin(bstNode* root) {
+    if(root == NULL) return -1;
+    bstNode* current = root;
+    while(current->left != NULL) {
+        current = current->left;
+    }
+    return current->data;
+}
+```
+
+## Find height
+
+```cpp
+int findHeight(bstNode* root) {
+  if(root == NULL) return -1;
+  int leftHeight = findHeight(root->left);
+  int rightHeight = findHeight(root->right);
+  return max(leftHeight,rightHeight)+1;
+}
+```
+
