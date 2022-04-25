@@ -5,6 +5,7 @@
   * [pre-order](#pre-order)
   * [in-order](#in-order)
   * [post-order](#post-order)
+
 [Search](#search)
 [Find maximum and minimum](#find-maximum-and-find-minimum)
 [Find height](#find-height)
