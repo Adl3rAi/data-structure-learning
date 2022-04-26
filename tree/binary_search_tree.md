@@ -7,8 +7,15 @@
   * [post-order](#post-order)
 
 [Search](#search)
+
 [Find maximum and minimum](#find-maximum-and-find-minimum)
+
 [Find height](#find-height)
+
+[Check binary tree](#check-if-a-binary-tree-is-a-binary-search-tree)
+
+[Delete a node from bst](#delete-a-node-from-bst)
+
 ## Define a binary search tree
 Binary Search Tree(BST): the element in the left side is smaller than or equal to the elements in the right side of the tree.
 
@@ -162,6 +169,82 @@ int findHeight(bstNode* root) {
   int leftHeight = findHeight(root->left);
   int rightHeight = findHeight(root->right);
   return max(leftHeight,rightHeight)+1;
+}
+```
+
+## Check if a binary tree is a binary search tree
+
+```mermaid
+graph TD;
+root-->left_subtree;
+root-->right_subtree;
+```
+
+`left_subtree->data < root->data < right_subtree->data`
+
+```cpp
+int iSL(bstNode* root, val) {
+ 	if(root == NULL) return true;
+  else if(root->left <= val && iSL(root->left, val) && iSL(root->right, val)) return true;
+  else return false;
+}
+int iSG(bstNode* root, val) {
+  if(root == NULL) return true;
+  else if(root->right > val && iSG(root->left, val) && iSG(root->right, val)) return true;
+  else return false;
+}
+int isBST(bstNode* root) {
+  if(root == NULL) return true;
+  else if(iSL(root->left, root->data) && iSG(root->right, root->data) && isBST(root->left) && isBST(root->right)) return true;
+  else return false;
+}
+```
+
+## Delete a node from BST
+
+```mermaid
+graph TD;
+12-->5;
+12-->15;
+5-->3;
+5-->7;
+15-->13;
+15-->17;
+3-->1;
+3-->NULL1;
+7-->NULL2;
+7-->9;
+17-->NULL3;
+17-->19;
+```
+
+```cpp
+bstNode* Delete(bstNode* root, int data) {
+    if(root == NULL) return root;
+    else if(data < root->data) root->left = Delete(root->left, data);
+    else if(data > root->data) root->right = Delete(root->right, data);
+    else {
+        if(root->left == NULL && root->right == NULL) {
+            delete(root);
+            root = NULL;
+        }
+        else if(root->left == NULL) {
+            bstNode* temp = root;
+            root = root->right;
+            delete(temp);
+        }
+        else if(root->right == NULL) {
+            bstNode* temp = root;
+            root = root->left;
+            delete(temp);
+        }
+        else {
+            bstNode* temp = findMin(root->right);
+            root->data = temp->data;
+            root->right = Delete(root->right, temp->data);
+        }
+    }
+    return root;
 }
 ```
 
