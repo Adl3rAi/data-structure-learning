@@ -1,6 +1,9 @@
 [Define a binary search tree](#define-a-binary-search-tree)
+
 [Insert an element](#insert-an-element)
+
 [Traverse](#traverse)
+
   * [level order](#level-order)
   * [pre-order](#pre-order)
   * [in-order](#in-order)
@@ -15,6 +18,8 @@
 [Check binary tree](#check-if-a-binary-tree-is-a-binary-search-tree)
 
 [Delete a node from bst](#delete-a-node-from-bst)
+
+[Inorder successor in a BST](#inorder-successor-in-a-bst)
 
 ## Define a binary search tree
 Binary Search Tree(BST): the element in the left side is smaller than or equal to the elements in the right side of the tree.
@@ -247,4 +252,36 @@ bstNode* Delete(bstNode* root, int data) {
     return root;
 }
 ```
+
+## Inorder successor in a BST
+
+case 1: Node has right subtree --> find the min in right subtree
+
+case 2: No right subtree --> the nearest ancestor for which given node would be in left subtree
+
+```cpp
+bstNode* getSuccessor(bstNode* root, int data) {
+	bstNode* current = Find(root, data);
+  if(current == NULL) return NULL;
+  if(current->right != NULL) {
+    return findMin(current->right);
+  }
+  else {
+    bstNode* successor = NULL;
+    bstNode* ancestor = root;
+    while(ancestor != current) {
+      if(current->data < ancestor->data) {
+        successor = ancestor;
+        ancestor = ancestor->left;
+      }
+      else {
+        ancestor = ancestor->right;
+      }
+    }
+    return successor;
+  }
+}
+```
+
+
 
